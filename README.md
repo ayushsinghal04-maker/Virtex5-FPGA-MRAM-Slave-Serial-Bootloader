@@ -56,6 +56,17 @@ The system is implemented across three core Verilog modules:
 ## 📁 Repository Map
 
 ```text
+├── docs and photos/
+|   ├── docs
+|   |     ├── MRAM
+|   |     ├── PMC PIN CONNECTOR SAC 1
+|   |     ├── PMC PIN CONNECTOR SAC 2
+|   |
+|   ├── photos 
+|   |     ├── MRAM
+|   |     ├── PMC PIN CONNECTOR SAC 1
+|   |     ├── PMC PIN CONNECTOR SAC 2
+|
 ├── rtl/
 │   ├── v5_bootloader_top.v   # Top wrapper & FSM coordinator
 │   ├── mram_interface.v      # Memory address logic & 2-to-4 decoder

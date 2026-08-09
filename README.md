@@ -58,9 +58,9 @@ The system is implemented across three core Verilog modules:
 ```text
 ├── docs and photos/
 |   ├── docs
-|   |     ├── MRAM
-|   |     ├── PMC PIN CONNECTOR SAC 1
-|   |     ├── PMC PIN CONNECTOR SAC 2
+|   |     ├── Ayush_Singhal_SAC_internship_FPGA_project_report.pdf
+|   |     ├── Homeywell-HXNV06440BEN-datasheet.pdf
+|   |     ├── Virtex-5 FPGA Configuration Guide.pdf
 |   |
 |   ├── photos 
 |   |     ├── MRAM

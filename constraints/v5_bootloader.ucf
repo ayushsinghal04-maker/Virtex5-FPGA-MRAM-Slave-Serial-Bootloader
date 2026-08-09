@@ -1,1 +1,81 @@
+# VIRTEX-5 BOOTLOADER CONSTRAINTS FILE
+# MAPS v5_bootloader_top.v PORTS TO PHYSICAL OBSP BOARD PINS
+# -----------------------------------------------------------------------
+# SYSTEM CLOCK & RESET
+# -----------------------------------------------------------------------
+# Assuming AL15 provides the single-ended system clock. 
+# WARNING: Verify physical frequency. If not 100MHz, a PLL/DCM is required.
+NET "clk" LOC = "J16" | IOSTANDARD = "LVCMOS33";
+NET "dbg_clk_3mhz" LOC = "P7" | IOSTANDARD = "LVCMOS33";
+
+
+# Map Reset to the Power-On-Reset Test Point
+NET "rst_n"     LOC = "AU22"  | IOSTANDARD = "LVCMOS33";
+NET "dbg_rst_n" LOC = "E8"    | IOSTANDARD = "LVCMOS33";
+
+# THE LAB TRIGGER (Manual Ignition)
+# PULLDOWN is mandatory so floating static doesn't fire the bootloader
+NET "start_boot" LOC = "K5" | IOSTANDARD = "LVCMOS33" | PULLDOWN; ###K1-76 
+
+# -----------------------------------------------------------------------
+# MRAM PHYSICAL INTERFACE 
+# -----------------------------------------------------------------------
+# Address Bus (23 bits)
+NET "mram_a[0]"  LOC = "P13"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[1]"  LOC = "N13"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[2]"  LOC = "M29"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[3]"  LOC = "N30"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[4]"  LOC = "M13"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[5]"  LOC = "M14"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[6]"  LOC = "N29"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[7]"  LOC = "N28"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[8]"  LOC = "N14"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[9]"  LOC = "N15"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[10]" LOC = "P28"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[11]" LOC = "P27"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[12]" LOC = "N16"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[13]" LOC = "M16"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[14]" LOC = "N26"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[15]" LOC = "P26"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[16]" LOC = "P17"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[17]" LOC = "P18"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[18]" LOC = "P25"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[19]" LOC = "N25"  | IOSTANDARD = "LVCMOS33";
+NET "mram_a[20]" LOC = "AM29" | IOSTANDARD = "LVCMOS33";
+# Data Bus (8 bits)
+NET "mram_dq[0]" LOC = "AJ26" | IOSTANDARD = "LVCMOS33";
+NET "mram_dq[1]" LOC = "AK27" | IOSTANDARD = "LVCMOS33";
+NET "mram_dq[2]" LOC = "AM14" | IOSTANDARD = "LVCMOS33";
+NET "mram_dq[3]" LOC = "AN14" | IOSTANDARD = "LVCMOS33";
+NET "mram_dq[4]" LOC = "AK29" | IOSTANDARD = "LVCMOS33";
+NET "mram_dq[5]" LOC = "AK28" | IOSTANDARD = "LVCMOS33";
+NET "mram_dq[6]" LOC = "AP13" | IOSTANDARD = "LVCMOS33";
+NET "mram_dq[7]" LOC = "AN13" | IOSTANDARD = "LVCMOS33";
+
+# MRAM Control Pins
+NET "mram_ce_b[0]"  LOC = "AL30" | IOSTANDARD = "LVCMOS33";
+NET "mram_ce_b[1]"  LOC = "AL14" | IOSTANDARD = "LVCMOS33";
+NET "mram_ce_b[2]"  LOC = "AM28" | IOSTANDARD = "LVCMOS33";
+NET "mram_ce_b[3]"  LOC = "AM13" | IOSTANDARD = "LVCMOS33";
+NET "mram_we"       LOC = "AK14" | IOSTANDARD = "LVCMOS33"; 
+
+
+
+# -----------------------------------------------------------------------
+# VIRTEX-5 TARGET CONFIGURATION (SLAVE SERIAL)
+# -----------------------------------------------------------------------
+# The Gated Clock and Data Stream
+NET "v5_cclk"   LOC = "V35"  | IOSTANDARD = "LVCMOS33" | SLEW = FAST | DRIVE = 12;
+NET "v5_din"    LOC = "P35"  | IOSTANDARD = "LVCMOS33" | SLEW = FAST | DRIVE = 12;
+
+
+# Handshake Pins
+NET "v5_prog_b" LOC = "L35"  | IOSTANDARD = "LVCMOS33";
+# NET "v5_init_b" LOC = "H35"  | IOSTANDARD = "LVCMOS33";
+NET "v5_done"   LOC = "E35"  | IOSTANDARD = "LVCMOS33";
+
+# TIMING CONSTRAINT
+# Force the synthesizer to respect the 100MHz master clock period
+NET "clk" TNM_NET = "sys_clk";
+TIMESPEC TS_sys_clk = PERIOD "sys_clk" 83.33 ns HIGH 50%;
 

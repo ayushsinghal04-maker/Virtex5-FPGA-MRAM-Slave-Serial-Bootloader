@@ -63,9 +63,11 @@ The system is implemented across three core Verilog modules:
 |   |     ├── Virtex-5 FPGA Configuration Guide.pdf
 |   |
 |   ├── photos 
-|   |     ├── MRAM
-|   |     ├── PMC PIN CONNECTOR SAC 1
-|   |     ├── PMC PIN CONNECTOR SAC 2
+|   |     ├── 1000324050.jpg
+|   |     ├── 1000324051.jpg
+|   |     ├── MRAM.jpg
+|   |     ├── PMC PIN CONNECTOR SAC 1.jpg
+|   |     ├── PMC PIN CONNECTOR SAC 2.jpg
 |
 ├── rtl/
 │   ├── v5_bootloader_top.v   # Top wrapper & FSM coordinator

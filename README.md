@@ -59,7 +59,7 @@ The system is implemented across three core Verilog modules:
 ├── docs and photos/
 |   ├── docs
 |   |     ├── Ayush_Singhal_SAC_internship_FPGA_project_report.pdf
-|   |     ├── Homeywell-HXNV06440BEN-datasheet.pdf
+|   |     ├── Honeywell-HXNV06440BEN-datasheet.pdf
 |   |     ├── Virtex-5 FPGA Configuration Guide.pdf
 |   |
 |   ├── photos 
